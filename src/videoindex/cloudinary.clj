@@ -19,4 +19,9 @@
 
 (defn get-videos []
   (let [videos (-> url get-videos-data :body (json/read-json true) :resources)]
-    (map parse-video-data videos)))
+    (->> videos
+      (map parse-video-data)
+      (sort #(compare (:id %1) (:id %2))))))
+
+(defn get-year [video]
+  (-> video :id (subs 0 4)))
