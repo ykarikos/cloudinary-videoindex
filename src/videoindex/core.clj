@@ -6,7 +6,6 @@
 (defn -main
   "I don't do a whole lot ... yet."
   [& args]
-  (->> (cloudinary/get-videos)
-    (map html/video-to-item)
-    (apply str)
+  (-> (cloudinary/get-videos)
+    (html/generate-page)
     println))

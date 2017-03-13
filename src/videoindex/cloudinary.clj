@@ -22,6 +22,3 @@
     (->> videos
       (map parse-video-data)
       (sort #(compare (:id %1) (:id %2))))))
-
-(defn get-year [video]
-  (-> video :id (subs 0 4)))

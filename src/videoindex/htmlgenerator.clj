@@ -1,6 +1,5 @@
 (ns videoindex.htmlgenerator
-  (:require [videoindex.cloudinary :as cloudinary]
-            [environ.core :refer [env]]
+  (:require [environ.core :refer [env]]
             [hiccup.core :as h]))
 
 (def url-prefix (env :cloudinary-url-prefix))
@@ -12,7 +11,7 @@
     {:type "video/ogg"
      :ext ".wgv"}])
 
-(defn video-to-item
+(defn- video-to-item
   [{:keys [id date title]}]
   (h/html
     [:li
@@ -23,5 +22,23 @@
           (for [format video-formats]
             [:source {:src (str url-prefix id (:ext format))
                       :type (:type format)}])]]
-      [:div title]
-      [:div date]]))
+      [:div date]
+      [:div title]]))
+
+(defn- get-year [video]
+  (-> video :id (subs 0 4)))
+
+(defn- generate-body [videos years]
+  (h/html
+    (for [year years]
+      (list
+        [:h1 year]
+        [:ul
+          (map video-to-item (filter #(= year (get-year %1)) videos))]))))
+
+(defn generate-page [videos]
+  (let [years (->> videos (map get-year) distinct)]
+    (str (slurp "resources/frontmatter.html")
+      (->> (generate-body videos years)
+        (apply str))
+      (slurp "resources/backmatter.html"))))
