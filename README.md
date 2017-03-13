@@ -2,6 +2,14 @@
 
 FIXME: description
 
+## Configuration
+
+Environment variables
+- `CLOUDINARY_CLOUD_NAME`
+- `CLOUDINARY_API_KEY`
+- `CLOUDINARY_API_SECRET`
+
+
 ## Installation
 
 Download from http://example.com/FIXME.
@@ -20,17 +28,6 @@ FIXME: listing of options this app accepts.
 
 ...
 
-### Bugs
-
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
-
 ## License
 
-Copyright © 2017 FIXME
-
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+Copyright © 2017 Yrjö Kari-Koskinen <ykk@peruna.fi>
