@@ -5,7 +5,6 @@
                  [clj-http "2.3.0"]
                  [org.clojure/data.json "0.2.6"]
                  [environ "0.5.0"]
-                 [com.cloudinary/cloudinary-http44 "1.8.1"]
                  [clj-time "0.8.0"]
                  [hiccup "1.0.5"]]
   :main ^:skip-aot videoindex.core
