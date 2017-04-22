@@ -9,7 +9,7 @@
    {:type "video/mp4"
     :ext ".mp4"}
     {:type "video/ogg"
-     :ext ".wgv"}])
+     :ext ".ogv"}])
 
 (defn- video-to-item
   [{:keys [id date title]}]
